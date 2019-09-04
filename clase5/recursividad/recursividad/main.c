@@ -14,16 +14,19 @@ unsigned int factorial(int);
 int main()
 {
     int numero;
-
     unsigned int resultado=1;
     printf("Ingrese el numero ");
     scanf("%d",&numero);
     resultado=factorial(numero);
+
     printf("El factorial es: %d ",resultado);
 
-    int i;
+
   /*
-    for(i=numero;i>=1;i--){
+    int numero=5;
+    int resultado=1;
+    int i;
+     for(i=numero;i>=1;i--){
     resultado = resultado*i;
 
     }
@@ -48,9 +51,3 @@ unsigned int factorial(int numero)
     }
     return resultado;
 }
-
-
-
-
-
-
