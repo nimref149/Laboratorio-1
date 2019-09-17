@@ -19,7 +19,7 @@ int main()
     scanf("%d",&numero);
     resultado=factorial(numero);
 
-    printf("El factorial es: %d ",resultado);
+    printf("El factorial es: %lu ",resultado);
 
 
   /*

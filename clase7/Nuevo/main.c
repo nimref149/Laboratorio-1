@@ -47,42 +47,25 @@ int main()
         for(j=i+1; j<T; j++)
         {
             if(legajo[i]>legajo[j])
-            {//tecnica de swapeo,swap
-            auxInt=legajo[i];
-            legajo[i]=legajo[j];
-            legajo[j]=auxInt;
+            {
+                //tecnica de swapeo,swap
+                auxInt=legajo[i];
+                legajo[i]=legajo[j];
+                legajo[j]=auxInt;
 
-            strcpy(auxString,nombre[i]);
-            strcpy(nombre[i],nombre[j]);
-            strcpy(nombre[j],auxString);
+                strcpy(auxString,nombre[i]);
+                strcpy(nombre[i],nombre[j]);
+                strcpy(nombre[j],auxString);
 
             }
-
-
 
         }
     }
 
-      for(i=0; i<T; i++)
+    for(i=0; i<T; i++)
     {
         printf("%d\t%s\n",legajo[i],nombre[i]);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /*
@@ -95,3 +78,13 @@ int main()
     */
     return 0;
 }
+
+
+
+
+
+
+
+
+
+

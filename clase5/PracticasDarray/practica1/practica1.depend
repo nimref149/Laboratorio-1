@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1568241578 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase5\practicasdarray\practica1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"vectores.h"
+
+1568240978 c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase5\practicasdarray\practica1\vectores.h
+
+1568241900 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase5\practicasdarray\practica1\vectores.c
+	<stdio.h>
+	"vectores.h"
+
