@@ -33,3 +33,20 @@
 	"Alumno.h"
 	<string.h>
 
+1569307968 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase9\estructuras 1c profesor\alumno.c
+	"Alumno.h"
+	<string.h>
+	<ctype.h>
+	<stdio.h>
+	<stdlib.h>
+
+1569307909 c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase9\estructuras 1c profesor\alumno.h
+	<stdio.h>
+	<ctype.h>
+
+1568833036 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase9\estructuras 1c profesor\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"Alumno.h"
+
