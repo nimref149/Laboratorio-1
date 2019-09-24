@@ -6,11 +6,15 @@
 
 typedef struct
 {
-
     int dia;
     int mes;
     int anio;
+   //int idFecha;
 } eFecha;
+//funcion que muestre localidad y alumno
+//funcion devuelva la localidad completa
+//hace una funcion para mostrar la localidad
+//a la funcion de mostrar agregar la localidad
 
 typedef struct
 {
@@ -25,6 +29,7 @@ typedef struct
     float promedio;
     int idLocalidad;
     int estado;
+    //int idFecha;
 } eAlumno;
 
 eAlumno cargarAlumno(void);
@@ -39,3 +44,6 @@ int eliminarAlumno(eAlumno[], int);
 int modificarAlumno(eAlumno[], int, int);
 
 int buscarAlumnoPorLegajo(eAlumno[], int, int);
+void mostrarPorLocalidad(eAlumno[]);
+void mostrarAlumnosConLocalidad(eAlumno[],int,eLocalidad[],int);
+

@@ -1,5 +1,6 @@
 #include "Alumno.h"
-
+//que sume cada 1
+//addemploye(emplote[],int,name,lastname,sl);//si esta todo bien agregar los datos al array
 int buscarLibre(eAlumno listadoDeAlumnos[], int tam)
 {
 
@@ -222,4 +223,26 @@ int eliminarAlumno(eAlumno listadoDeAlumnos[], int tam)
 
 }
 
+void mostrarAlumnosConLocalidad(eAlumno alumno[],int tA,eLocalidad localidad[],int tL)
+{
+
+    int i;
+    int j;
+    for(i=0; i<tA; i++)
+    {
+        if(alumno[i].estado==OCUPADO)
+        {
+            printf("%d--%s--%f",alumno[i].legajo,alumno[i].nombre,alumno[i].promedio);
+            for(j=0; j<tL; j++)
+            {
+                if(alumno[i].idLocalidad==localidad[j].idLocalidad)
+                {
+                    printf("%s\n",localidad[j].localidad);
+                }
+            }
+        }
+    }
+
+}
+void mostrarLocalidades(eLocalidad localidad[],int tl,);
 
