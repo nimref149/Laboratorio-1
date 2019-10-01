@@ -10,6 +10,22 @@ hacer:
 4-Mostrar los alumnos que viven en avellaneda
 5-Mostrar la localidad con menos habitantes.
 */
+/**
+el examen va a ser de uno a muchos
+relacion de uno a muchos
+localidad auxiliar estructura
+.Mostrar inscripciones c/alumno y materia
+.Ingresar una materia c(todos los alumnos
+.Listar cantidad de inscripciones por: cada materia por localidad
+un for para las localidad es un for para los alumnos y un for de inscripcion 3 for
+un array e 3 localidades contadores
+.localidad c/mayor inscripcion
+A programacion I antes era para todas las materias,ahora es para programacio 1 se reutiliza el contador
+.total de horas que estudia
+un alumno seleccionado
+.Inscripciones por fecha determinada
+funcion que compare las fechas si da bien lo muestro
+*/
 
 int main()
 {
@@ -64,6 +80,7 @@ int main()
                 case -1:
                     printf("Dato no encontrado\n");
                     break;
+
             }
 
             break;

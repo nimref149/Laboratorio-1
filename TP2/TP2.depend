@@ -13,3 +13,17 @@
 	<stdlib.h>
 	"ArrayEmployees.h"
 
+1569932139 source:c:\users\alumno\desktop\nueva carpeta\laboratorio-1\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+	"input.h"
+
+1569932139 c:\users\alumno\desktop\nueva carpeta\laboratorio-1\tp2\arrayemployees.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+
+1569932139 c:\users\alumno\desktop\nueva carpeta\laboratorio-1\tp2\input.h
+
