@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1569888178 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\recursando tps\tp2\arrayemployees.c
+	"ArrayEmployees.h"
+
+1569888829 c:\users\cristiandmk\desktop\espacio utn\curso 2\recursando tps\tp2\arrayemployees.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+
+1569888241 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\recursando tps\tp2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayEmployees.h"
+

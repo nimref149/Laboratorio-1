@@ -54,3 +54,15 @@
 	<stdio.h>
 	<string.h>
 
+1569537998 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase11\estructuras 1c 23-9\alumno.c
+	"Alumno.h"
+
+1569537998 c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase11\estructuras 1c 23-9\alumno.h
+	<stdio.h>
+	<string.h>
+
+1569538229 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\clase11\estructuras 1c 23-9\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Alumno.h"
+

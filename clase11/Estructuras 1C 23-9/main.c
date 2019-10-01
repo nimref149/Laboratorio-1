@@ -84,6 +84,8 @@ int main()
             }
             break;
         }
+    system("pause");
+    system("cls");
     }
     while(opcion!=7);
     return 0;

@@ -56,12 +56,12 @@ void cargarListadoAlumnos(eAlumno listadoDeAlumnos[], int tam)
     int i;
     int indice;
 
-    indice = buscarLibre(listadoDeAlumnos, tam);
-    printf("Indice: %d\n", indice);
+    indice = buscarLibre(listadoDeAlumnos, tam);//busca un lugar libre
+    printf("Indice: %d\n", indice);//muestra el indice
     if(indice!=-1)
     {
         //hay lugar
-        listadoDeAlumnos[indice] = cargarAlumno();
+        listadoDeAlumnos[indice] = cargarAlumno();//pide los datos y los carga
     }
     else
     {
