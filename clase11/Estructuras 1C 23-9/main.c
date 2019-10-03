@@ -68,6 +68,7 @@ int main()
             sortStudentsByNameAndAverage(listaDeAlumnos,A);
             break;
         case 4:
+
             respuesta = eliminarAlumno(listaDeAlumnos,A);
             switch(respuesta)
             {
@@ -83,9 +84,14 @@ int main()
 
             }
 
-            break;
-        case 5:
 
+            break;
+
+        case 5:
+            if(flag==0){
+            printf("Primero debe cargar usuarios!!");
+            }
+            else{
             respuesta = modificarAlumno(listaDeAlumnos,A,102);
             switch(respuesta)
             {
@@ -99,7 +105,9 @@ int main()
                     printf("Dato no encontrado\n");
                     break;
             }
+            }
             break;
+            }
         }
     system("pause");
     system("cls");

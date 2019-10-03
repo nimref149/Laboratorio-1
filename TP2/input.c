@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include "input.h"
 #include <time.h>
 #include <ctype.h>
 #include <conio.h>
+#include "input.h"
+#include "ArrayEmployees.h"
 /**
 isalpha() //Valida si es una letra
 isdigit() //Valida si es un numero Verdadero (!=0) o falso (0)
@@ -16,7 +17,8 @@ tolower();para pasar el contenido de una variable tipo char ( char letra ) o arr
 void getString(char message[],char input[])
 {
     printf("%s",message);
-    scanf ("%s", input);
+    //scanf ("%s", input);
+    gets(input);
 }
 
 int getInt(char message[])
@@ -82,12 +84,23 @@ int esNumericoFlotante(char str[])
     return 0;
 }
 
-int esSoloLetras(char str[])
+int esSoloLetrasEspacio(char str[])
 {
     int i=0;
     while(str[i] != '\0')
     {
         if((str[i] != ' ') && (str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
+            return -1;
+        i++;
+    }
+    return 0;
+}
+int esSoloLetras(char str[])
+{
+    int i=0;
+    while(str[i] != '\0')
+    {
+        if((str[i] < 'a' || str[i] > 'z') && (str[i] < 'A' || str[i] > 'Z'))
             return -1;
         i++;
     }
@@ -101,23 +114,23 @@ int getIntValid(int* input,char message[],char eMessage[],int lowLimit,int hiLim
     getString(message,aux);
     int retorno=-1;
     int esValido=esNumerico(aux);
-    if(esValido==0)//validador
+    if(esValido==0)
     {
         auxNumero=atoi(aux);
         if(auxNumero<lowLimit || auxNumero>hiLimit)
         {
-            printf("%s\n",eMessage);
+            printf("%s ",eMessage);
         }
         else
         {
             *input=auxNumero;
-            //*
+
             retorno=0;
         }
     }
     else
     {
-        printf("%s\n",eMessage);
+        printf("%s ",eMessage);
     }
 
     return retorno;
@@ -135,7 +148,7 @@ int getFloatValid(float* input,char message[],char eMessage[], float lowLimit, f
         auxNumero=atof(aux);
         if(auxNumero<lowLimit || auxNumero>hiLimit)
         {
-            printf("%s",eMessage);
+            printf("%s ",eMessage);
         }
         else
         {
@@ -146,7 +159,7 @@ int getFloatValid(float* input,char message[],char eMessage[], float lowLimit, f
     }
     else
     {
-        printf("%s\n",eMessage);
+        printf("%s ",eMessage);
     }
     return retorno;
 }
@@ -167,7 +180,7 @@ int getCharValid(char* input,char message[],char eMessage[], char lowLimit, char
     {
         if(auxChar<lowLimit || auxChar>hiLimit)
         {
-            printf("%s\n",eMessage);
+            printf("%s ",eMessage);
         }
         else
         {
@@ -177,7 +190,7 @@ int getCharValid(char* input,char message[],char eMessage[], char lowLimit, char
     }
     else
     {
-        printf("%s\n",eMessage);
+        printf("%s ",eMessage);
     }
     return retorno;
 }
@@ -188,12 +201,13 @@ int getStringLetras(char* input,char message[],char eMessage[], int lowLimit, in
     char auxString[256];
     int esValido;
     getString(message,auxString);
+    fflush(stdin);
     esValido=esSoloLetras(auxString);
     if(esValido==0)
     {
         if(strlen(auxString)<lowLimit || strlen(auxString)>hiLimit)
         {
-            printf("%s",eMessage);
+            printf("%s ",eMessage);
         }
         else
         {
@@ -203,7 +217,7 @@ int getStringLetras(char* input,char message[],char eMessage[], int lowLimit, in
     }
     else
     {
-        printf("%s",eMessage);
+        printf("%s ",eMessage);
     }
 
     return retorno;
@@ -220,7 +234,7 @@ int getStringNumeros(char* input,char message[],char eMessage[], int lowLimit, i
     {
         if(strlen(auxNum)<lowLimit || strlen(auxNum)>hiLimit)
         {
-            printf("%s",eMessage);
+            printf("%s ",eMessage);
         }
         else
         {
@@ -230,7 +244,7 @@ int getStringNumeros(char* input,char message[],char eMessage[], int lowLimit, i
     }
     else
     {
-        printf("%s",eMessage);
+        printf("%s ",eMessage);
     }
 
     return retorno;
@@ -246,7 +260,7 @@ int getStringFlotantes(char* input,char message[],char eMessage[], int lowLimit,
     {
         if(strlen(auxNum)<lowLimit || strlen(auxNum)>hiLimit)
         {
-            printf("%s",eMessage);
+            printf("%s ",eMessage);
         }
         else
         {
@@ -256,11 +270,12 @@ int getStringFlotantes(char* input,char message[],char eMessage[], int lowLimit,
     }
     else
     {
-        printf("%s",eMessage);
+        printf("%s ",eMessage);
     }
 
     return retorno;
 }
+
 
 int confirm()
 {
@@ -287,3 +302,76 @@ int confirm()
     }
     return retorno;
 }
+
+int getStringLetrasEspacio(char* input,char message[],char eMessage[], int lowLimit, int hiLimit){
+
+    int retorno=-1;
+    char auxString[256];
+    int esValido;
+    getString(message,auxString);
+    fflush(stdin);
+    esValido=esSoloLetrasEspacio(auxString);
+    if(esValido==0)
+    {
+        if(strlen(auxString)<lowLimit || strlen(auxString)>hiLimit)
+        {
+            printf("%s ",eMessage);
+        }
+        else
+        {
+            strcpy(input,auxString);
+            retorno=0;
+        }
+    }
+    else
+    {
+        printf("%s ",eMessage);
+    }
+
+    return retorno;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

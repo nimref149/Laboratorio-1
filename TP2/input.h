@@ -1,3 +1,5 @@
+#define LIBRE 0
+#define OCUPADO 1
 void getString(char message[],char input[]);
 int getInt(char message[]);
 float getFloat(char message[]);
@@ -10,10 +12,11 @@ int getIntValid(int* input,char message[],char eMessage[],int lowLimit,int hiLim
 int getFloatValid(float* input,char message[],char eMessage[], float lowLimit, float hiLimit);
 int getCharValid(char* input,char message[],char eMessage[], char lowLimit, char hiLimit);
 int getStringLetras(char* input,char message[],char eMessage[], int lowLimit, int hiLimit);
+int getStringLetrasEspacio(char* input,char message[],char eMessage[], int lowLimit, int hiLimit);
 int getStringNumeros(char* input,char message[],char eMessage[], int lowLimit, int hiLimit);
 int getStringFlotantes(char* input,char message[],char eMessage[], int lowLimit, int hiLimit);
 int confirm();
-
+int esSoloLetrasEspacio(char str[]);
 
 
 

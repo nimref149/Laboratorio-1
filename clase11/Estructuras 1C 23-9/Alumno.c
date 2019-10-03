@@ -244,5 +244,5 @@ void mostrarAlumnosConLocalidad(eAlumno alumno[],int tA,eLocalidad localidad[],i
     }
 
 }
-void mostrarLocalidades(eLocalidad localidad[],int tl,);
+//void mostrarLocalidades(eLocalidad localidad[],int tl,);
 
