@@ -11,19 +11,23 @@ int main()
     Employee empleados[TE];
     respuesta=initEmployees(empleados,TE);
     int opcion;
-    int flag=0;
+    int flag;
     if(respuesta!=-1)
     {
 
         do
         {
-            printf("ABM\n");
+            printf("======ABM=====\n");
             printf("1.Altas\n2.Modificar\n3.Baja\n4.Informar\n5.Salir\n");
             while((getIntValid(&opcion,"Ingrese una opcion: ","Error, ingreso una opcion invalida\n",1,5))==-1);
+            flag=autoId(empleados,TE);
+            if(flag==1)
+            {
+                flag=0;
+            }
             switch(opcion)
             {
             case 1:
-                flag=1;
                 respuesta=cargarEmpleado(empleados,TE);
                 switch(respuesta)
                 {
@@ -42,7 +46,6 @@ int main()
                 if(flag==0)
                 {
                     printf("Primero debe cargar usuarios!!\n");
-
                 }
                 else
                 {
@@ -117,7 +120,7 @@ int main()
             system("pause");
             system("cls");
         }
-        while(respuesta!=5);
+        while(opcion!=5);
     }
     return 0;
 }

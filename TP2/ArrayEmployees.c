@@ -11,11 +11,12 @@ int initEmployees(Employee empleados[],int tam)
 {
     int retorno=-1;
     int i;
-    if(empleados!=NULL && tam>0){
+    if(empleados!=NULL && tam>0)
+    {
 
-        for(i=0;i<tam;i++)
+        for(i=0; i<tam; i++)
         {
-        empleados[i].isEmpty=LIBRE;
+            empleados[i].isEmpty=LIBRE;
         }
         retorno=0;
 
@@ -48,12 +49,16 @@ int addEmployees(Employee empleados[],int tam,int *id,char name[],char apellido[
     int retorno;
     if(tam>0 && empleados!=NULL && ((buscarLibre(empleados,tam))!=-1))
     {
-        *id=autoId(empleados,tam);
-        while((getStringLetras(name,"Ingrese nombre: ","Error",3,51))==-1 || confirm()!=1);
-        while((getStringLetras(apellido,"Ingrese apellido: ","Error",5,51))==-1||confirm()!=1);
-        while((getFloatValid(salario,"Ingrese salario: ","Error",0,100000))==-1||confirm()!=1);
-        while((getIntValid(sector,"Ingrese sector: [1][2][3]\n","Error",1,3))==-1||confirm()!=1);
-        retorno=0;
+        do
+        {
+            *id=autoId(empleados,tam);
+            while((getStringLetras(name,"Ingrese nombre: ","Error",1,51))==-1);
+            while((getStringLetras(apellido,"Ingrese apellido: ","Error",1,51))==-1);
+            while((getFloatValid(salario,"Ingrese salario: ","Error",1,100000))==-1);
+            while((getIntValid(sector,"Ingrese sector: [1][2][3]\n","Error",1,3))==-1);
+            retorno=0;
+        }
+        while((confirm())==0);
     }
     else
     {
@@ -144,27 +149,29 @@ int findEmployeeById(Employee empleados[],int tam,int id)
 int removeEmployee(Employee empleados[],int tam,int id)
 {
     int retorno=-1;
+    int index;
     int respuesta;
-    int i;
-    if(empleados!=NULL && tam>0)
+    index=findEmployeeById(empleados,tam,id);
+    if(empleados!=NULL && tam>0 && index!=-1)
     {
-        for(i=0; i<tam; i++)
+        //for(i=0; i<tam; i++)
+        // {
+        //  if(empleados[i].id==id&&empleados[i].isEmpty==OCUPADO)
+        // {
+        mostrarUnEmpleado(empleados[index]);
+        respuesta=confirm();
+        if(respuesta==1)
         {
-            if(empleados[i].id==id&&empleados[i].isEmpty==OCUPADO)
-            {
-                respuesta=confirm();
-                if(respuesta==1)
-                {
-                    empleados[i].isEmpty=LIBRE;
-                    retorno=0;
-                }
-                else
-                {
-                    retorno=1;
-                }
-                break;
-            }
+            empleados[index].isEmpty=LIBRE;
+            retorno=0;
         }
+        else
+        {
+            retorno=1;
+        }
+
+        //}
+        //}
     }
     return retorno;
 }
@@ -314,7 +321,7 @@ int printEmployees(Employee list[],int tam)
     hayAlguno=autoId(list,tam);
     if(hayAlguno!=1)
     {
-        printf(" id |     nombre    |   apellido    | salario   |   sector\n");
+        printf(" id |     nombre    |   apellido    | salario         |     sector       |\n");
 
         for(i=0; i<tam; i++)
         {
@@ -335,16 +342,20 @@ int printEmployees(Employee list[],int tam)
 void mostrarUnEmpleado(Employee lista)
 {
 
-printf(" %d  |  %-10s   |  %-10s   |   %.02f  |   %1d  \n",lista.id,lista.name,lista.lastName,lista.salary,lista.sector);
+    printf(" %d  |  %-10s   |  %-10s   |   %-10.02f    |      %-10d  |\n",lista.id,lista.name,lista.lastName,lista.salary,lista.sector);
 
 }
 
 int eliminarEmpleadoPorId(Employee lista[],int tam)
 {
-    int retorno;
+    int retorno=-1;
     int id;
-    while((getIntValid(&id,"Ingrese id de usuario a eliminar: ","Error, solo numeros entre 1 y 1000",1,1000)==-1));
-    retorno=removeEmployee(lista,tam,id);
+    retorno=printEmployees(lista,tam);
+    if(retorno!=-1)
+    {
+        while((getIntValid(&id,"Ingrese id de usuario a eliminar: ","Error ",1,10000)==-1));
+        retorno=removeEmployee(lista,tam,id);
+    }
     return retorno;
 }
 
@@ -353,41 +364,34 @@ int modificarAlumno(Employee lista[],int tam)
     int retorno=-1;
     int index;
     int opcion;
-    int i;
-    while((getIntValid(&index,"Ingrese id","Error",1,100000))==-1);
+    int validar;
+    validar=printEmployees(lista,tam);
+    while((getIntValid(&index,"Ingrese id de usuario a modificar: ","Error",1,10000))==-1);
     index=findEmployeeById(lista,tam,index);
-    if(index!=-1)
+    if(index!=-1&&validar!=-1)
     {
-        for(i=0; i<tam; i++)
+        mostrarUnEmpleado(lista[index]);
+        while((getIntValid(&opcion,"Que desea modificar?\n1-Nombre\n2-Apellido\n3-Salario\n4-Sector\n","Error",1,4))==-1);
+        switch(opcion)
         {
-            if(lista[i].id==index &&lista[i].isEmpty==OCUPADO)
-            {
-                while((getIntValid(&opcion,"Que desea modificar?\n1-Nombre\n2-Apellido\n3-Salario\n4-Sector\n","Error",1,3))==-1);
-                switch(opcion)
-                {
-                case 1:
-                    while((getStringLetras(lista[i].name,"Ingrese nuevo nombre: ","Error",1,51))==-1||confirm()!=1);
-                    retorno=0;
-                    break;
-                case 2:
-                    while((getStringLetras(lista[i].lastName,"Ingrese nuevo apellido: ","Error",1,51))==-1||confirm()!=1);
-                    retorno=0;
-                    break;
-                case 3:
-                    while((getFloatValid(&lista[i].salary,"Ingrese nuevo salario: ","Error",1,10000))==-1||confirm()!=1);
-                    retorno=0;
-                    break;
-                case 4:
-                    while((getIntValid(&lista[i].sector,"Ingrese nuevo Sector: ","Error",1,3))==-1||confirm()!=1);
-                    retorno=0;
-                    break;
-
-                }
-
-            }
+        case 1:
+            while((getStringLetras(lista[index].name,"Ingrese nuevo nombre: ","Error",1,51))==-1||confirm()!=1);
+            retorno=0;
+            break;
+        case 2:
+            while((getStringLetras(lista[index].lastName,"Ingrese nuevo apellido: ","Error",1,51))==-1||confirm()!=1);
+            retorno=0;
+            break;
+        case 3:
+            while((getFloatValid(&lista[index].salary,"Ingrese nuevo salario: ","Error",1,10000))==-1||confirm()!=1);
+            retorno=0;
+            break;
+        case 4:
+            while((getIntValid(&lista[index].sector,"Ingrese nuevo Sector [1][2][3] :","Error",1,3))==-1||confirm()!=1);
+            retorno=0;
+            break;
         }
     }
-
     return retorno;
 }
 
@@ -406,8 +410,8 @@ float salarioTotal(Employee empleados[],int tam)
     }
     if(acumulador!=0)
     {
-    printf("El salario total es %.2f\n",acumulador);
-    retorno=acumulador;
+        printf("El salario total es %.2f\n",acumulador);
+        retorno=acumulador;
     }
     return retorno;
 
@@ -460,8 +464,10 @@ int cuantosSuperanPromedio(Employee empleados[],int tam)
         }
         printf("La cantidad de empleados que superan el promedio es: %d\n",superanPromedio);
 
-    }else{
-    retorno=-1;
+    }
+    else
+    {
+        retorno=-1;
     }
 
     return retorno;
