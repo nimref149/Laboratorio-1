@@ -4,13 +4,13 @@
 #include "input.h"
 #define TE 1000
 #define TS 3
-
 int main()
 {
 
     int respuesta;
     Employee empleados[TE];
     respuesta=initEmployees(empleados,TE);
+    int opcion;
     int flag=0;
     if(respuesta!=-1)
     {
@@ -19,8 +19,8 @@ int main()
         {
             printf("ABM\n");
             printf("1.Altas\n2.Modificar\n3.Baja\n4.Informar\n5.Salir\n");
-            while((getIntValid(&respuesta,"Ingrese una opcion: ","Error, ingreso una opcion invalida\n",1,5))==-1);
-            switch(respuesta)
+            while((getIntValid(&opcion,"Ingrese una opcion: ","Error, ingreso una opcion invalida\n",1,5))==-1);
+            switch(opcion)
             {
             case 1:
                 flag=1;
@@ -39,24 +39,31 @@ int main()
                 }
                 break;
             case 2:
-
-
-                respuesta=modificarAlumno(empleados,TE);
-                switch(respuesta)
+                if(flag==0)
                 {
-                case 0:
-                    printf("Empleado modificado\n");
-                    break;
-                case -1:
-                    printf("Dato no encontrado\n");
-                    break;
+                    printf("Primero debe cargar usuarios!!\n");
+
+                }
+                else
+                {
+                    respuesta=modificarAlumno(empleados,TE);
+                    switch(respuesta)
+                    {
+                    case 0:
+                        printf("Empleado modificado\n");
+                        break;
+                    case -1:
+                        printf("Dato no encontrado\n");
+                        break;
+                    }
+
                 }
                 break;
 
             case 3:
                 if(flag==0)
                 {
-                    printf("Primero debe cargar usuarios!!");
+                    printf("Primero debe cargar usuarios!!\n");
                 }
                 else
                 {
@@ -78,26 +85,32 @@ int main()
             case 4:
                 if(flag==0)
                 {
-                    printf("Primero debe cargar usuarios!!");
+                    printf("Primero debe cargar usuarios!!\n");
                 }
                 else
                 {
-                    respuesta=menuListarOrdenar(lista,tam);
-                    switch(respuesta)
+
+                    printf("Informar:\n");
+                    printf("1-Listado empleado ordenados alfabeticamente por apellido y sector de manera ascendente\n");
+                    printf("2-Total promedio de los salarios y empleados que superan el promedio\n");
+                    while((getIntValid(&opcion,"Ingrese una opcion: ","Error, ingreso una opcion invalida\n",1,2))==-1);
+                    if(opcion==1)
                     {
-                    case 1:
-                        respuesta=printEmployees(empleados,TE);
+                        menuListarOrdenar(empleados,TE);
+                    }
+                    else
+                    {
+                        respuesta=cuantosSuperanPromedio(empleados,TE);
                         if(respuesta==-1)
                         {
-                            printf("No hay empleados para mostrar○\n");
+                            printf("Ha habido un error\n");
                         }
-                    case -1:
-                        printf("No hay para ordenar\n");
+
                     }
                 }
                 break;
             case 5:
-                printf("Saliendo del programa");
+                printf("Saliendo del programa\n");
                 break;
 
             }

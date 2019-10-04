@@ -37,17 +37,17 @@
 	"input.h"
 	"ArrayEmployees.h"
 
-1569999438 c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\tp2\input.h
+1570149252 c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\tp2\input.h
 
-1570003314 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\tp2\main.c
+1570150621 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\tp2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"ArrayEmployees.h"
 	"input.h"
 
-1570000756 c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\tp2\arrayemployees.h
+1570149651 c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\tp2\arrayemployees.h
 
-1570003447 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\tp2\arrayemployees.c
+1570150235 source:c:\users\cristiandmk\desktop\espacio utn\curso 2\laboratorio-1\tp2\arrayemployees.c
 	"ArrayEmployees.h"
 	"input.h"
 	<stdio.h>

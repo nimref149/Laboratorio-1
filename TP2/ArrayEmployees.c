@@ -50,9 +50,9 @@ int addEmployees(Employee empleados[],int tam,int *id,char name[],char apellido[
     {
         *id=autoId(empleados,tam);
         while((getStringLetras(name,"Ingrese nombre: ","Error",3,51))==-1 || confirm()!=1);
-        while((getStringLetras(apellido,"Ingrese apellido: ","Error",5,51))==-1);
-        while((getFloatValid(salario,"Ingrese salario: ","Error",0,100000))==-1);
-        while((getIntValid(sector,"Ingrese sector: [1][2][3]\n","Error",1,3))==-1);
+        while((getStringLetras(apellido,"Ingrese apellido: ","Error",5,51))==-1||confirm()!=1);
+        while((getFloatValid(salario,"Ingrese salario: ","Error",0,100000))==-1||confirm()!=1);
+        while((getIntValid(sector,"Ingrese sector: [1][2][3]\n","Error",1,3))==-1||confirm()!=1);
         retorno=0;
     }
     else
@@ -168,51 +168,69 @@ int removeEmployee(Employee empleados[],int tam,int id)
     }
     return retorno;
 }
-//ordena el array de empleados por apellido y sector de manesa ascendente o descendente
-//se envia 1 para maensa ascendente 0 para descendente
+void menuListarOrdenar(Employee list[],int tam)
+{
+    int respuesta;
+    int order;
+    printf("0-De manera ascendente\n");
+    printf("1-De manera descendente\n");
+    while((getIntValid(&order,"Ingrese una opcion: ","Error",0,1))==-1);
+    respuesta=sortEmployees(list,tam,order);
+    switch(respuesta)
+    {
+    case 0:
+        respuesta=printEmployees(list,tam);
+        if(respuesta==-1)
+        {
+            printf("No hay empleados para mostrar\n");
+        }
+        break;
+    case -1:
+        printf("No hay para ordenar\n");
+        break;
+    }
+
+}
+
+
+
 int sortEmployees(Employee list[], int tam, int order)
 {
     int retorno=-1;
     if(list!=NULL && tam>0)
     {
 
-        if(order==1)
+        if(order==0)
         {
             retorno=ordernarAscendentePorNombreYsector(list,tam);
 
         }
-        else if(order==0)
+        else if(order==1)
         {
             retorno=ordernarDescendentePorNombreYsector(list,tam);
 
         }
-        else
-        {
-            printf("Ha ingresado mal el orden, 1 o 0\n");
-            retorno=-1;
-        }
-
     }
     return retorno;
 }
 
 int ordernarAscendentePorNombreYsector(Employee lista[],int tam)
 {
+    int retorno=-1;
     int i;
     int j;
-    int retorno=-1;
     Employee auxEmpleado;
     for(i=0; i<tam-1; i++)
     {
-        if(lista[i].isEmpty!=LIBRE)
+        if(lista[i].isEmpty==OCUPADO)
         {
 
             for(j=i+1; j<tam; j++)
             {
-                if(lista[j].isEmpty!=LIBRE)
+                if(lista[j].isEmpty==OCUPADO)
                 {
 
-                    if(strcmp(lista[i].lastName,lista[j].lastName)>0)
+                    if(stricmp(lista[i].lastName,lista[j].lastName)>0)
                     {
                         auxEmpleado = lista[i];
                         lista[i] = lista[j];
@@ -222,7 +240,7 @@ int ordernarAscendentePorNombreYsector(Employee lista[],int tam)
 
                     else
                     {
-                        if(strcmp(lista[i].lastName,lista[j].lastName)==0)
+                        if(stricmp(lista[i].lastName,lista[j].lastName)==0)
                         {
                             if(lista[i].sector>lista[j].sector)
                             {
@@ -233,6 +251,7 @@ int ordernarAscendentePorNombreYsector(Employee lista[],int tam)
                             }
                         }
                     }
+                    retorno=0;
 
                 }
             }
@@ -258,7 +277,7 @@ int ordernarDescendentePorNombreYsector(Employee lista[],int tam)
             {
                 if(lista[j].isEmpty==OCUPADO)
                 {
-                    if(strcmp(lista[i].lastName,lista[j].lastName)<0)
+                    if(stricmp(lista[i].lastName,lista[j].lastName)<0)
                     {
                         auxEmpleado = lista[i];
                         lista[i] = lista[j];
@@ -268,7 +287,7 @@ int ordernarDescendentePorNombreYsector(Employee lista[],int tam)
 
                     else
                     {
-                        if(strcmp(lista[i].lastName,lista[j].lastName)==0)
+                        if(stricmp(lista[i].lastName,lista[j].lastName)==0)
                         {
                             if(lista[i].sector<lista[j].sector)
                             {
@@ -295,7 +314,7 @@ int printEmployees(Employee list[],int tam)
     hayAlguno=autoId(list,tam);
     if(hayAlguno!=1)
     {
-        printf("   id   |     nombre    |   apellido    | salario |   sector\n");
+        printf(" id |     nombre    |   apellido    | salario   |   sector\n");
 
         for(i=0; i<tam; i++)
         {
@@ -316,7 +335,7 @@ int printEmployees(Employee list[],int tam)
 void mostrarUnEmpleado(Employee lista)
 {
 
-printf(" %d  |  %-10s   |  %-10s   |   %.02f  |   %d  \n",lista.id,lista.name,lista.lastName,lista.salary,lista.sector);
+printf(" %d  |  %-10s   |  %-10s   |   %.02f  |   %1d  \n",lista.id,lista.name,lista.lastName,lista.salary,lista.sector);
 
 }
 
@@ -324,7 +343,7 @@ int eliminarEmpleadoPorId(Employee lista[],int tam)
 {
     int retorno;
     int id;
-    while((getIntValid(&id,"Ingrese id de usuario a eliminar: ","Error, solo numeros entre 0 y 1000",1,1000)==-1));
+    while((getIntValid(&id,"Ingrese id de usuario a eliminar: ","Error, solo numeros entre 1 y 1000",1,1000)==-1));
     retorno=removeEmployee(lista,tam,id);
     return retorno;
 }
@@ -351,15 +370,15 @@ int modificarAlumno(Employee lista[],int tam)
                     retorno=0;
                     break;
                 case 2:
-                    while((getStringLetras(lista[i].lastName,"Ingrese nuevo apellido: ","Error",1,51))==-1);
+                    while((getStringLetras(lista[i].lastName,"Ingrese nuevo apellido: ","Error",1,51))==-1||confirm()!=1);
                     retorno=0;
                     break;
                 case 3:
-                    while((getFloatValid(&lista[i].salary,"Ingrese nuevo salario: ","Error",1,10000))==-1);
+                    while((getFloatValid(&lista[i].salary,"Ingrese nuevo salario: ","Error",1,10000))==-1||confirm()!=1);
                     retorno=0;
                     break;
                 case 4:
-                    while((getIntValid(&lista[i].sector,"Ingrese nuevo Sector: ","Error",1,3))==-1);
+                    while((getIntValid(&lista[i].sector,"Ingrese nuevo Sector: ","Error",1,3))==-1||confirm()!=1);
                     retorno=0;
                     break;
 
@@ -372,29 +391,81 @@ int modificarAlumno(Employee lista[],int tam)
     return retorno;
 }
 
-int menuListarOrdenar(Employee list[],int tam)
+float salarioTotal(Employee empleados[],int tam)
 {
-    int retorno;
-    int res;
-    while((getIntValid(&res,"1-Listado empleado ordenados alfabeticamente por apellido y sector\n2-Total y promedio de los salarios y cuantos superan el promedio","Error",1,2))==-1);
-    switch(res)
+    float acumulador=0;
+    int retorno=-1;
+    int i;
+    for(i=0; i<tam; i++)
     {
-    case 1:
-        retorno=sortEmployees(list,tam,1);
-        break;
-    case 2:
-        retorno=sortEmployees(list,tam,0);
-        break;
-    }
+        if(empleados[i].isEmpty==OCUPADO)
+        {
+            acumulador=acumulador+empleados[i].salary;
+        }
 
+    }
+    if(acumulador!=0)
+    {
+    printf("El salario total es %.2f\n",acumulador);
+    retorno=acumulador;
+    }
     return retorno;
+
+}
+
+
+float salarioPromedio(Employee empleados[],int tam)
+{
+    int contador=0;
+    float salarioTotall=0;
+    int retorno=-1;
+    float promedio;
+    int i;
+    for(i=0; i<tam; i++)
+    {
+        if(empleados[i].isEmpty==OCUPADO)
+        {
+            contador++;
+        }
+    }
+    salarioTotall=salarioTotal(empleados,tam);
+    if(salarioTotall!=-1&&contador!=0)
+    {
+        promedio=salarioTotall/contador;
+        printf("El salario promedio es %.2f\n",promedio);
+        retorno=promedio;
+    }
+    return retorno;
+
 }
 
 
 
+int cuantosSuperanPromedio(Employee empleados[],int tam)
+{
+    int retorno;
+    float promedio;
+    int superanPromedio=0;
+    int i;
+    promedio=salarioPromedio(empleados,tam);
+    if(promedio!=-1)
+    {
+        for(i=0; i<tam; i++)
+        {
+            if(empleados[i].salary>promedio&&empleados[i].isEmpty==OCUPADO)
+            {
+                superanPromedio++;
+            }
 
+        }
+        printf("La cantidad de empleados que superan el promedio es: %d\n",superanPromedio);
 
+    }else{
+    retorno=-1;
+    }
 
+    return retorno;
+}
 
 
 

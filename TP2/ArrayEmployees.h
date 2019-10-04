@@ -28,10 +28,11 @@ int ordernarDescendentePorNombreYsector(Employee lista[],int tam);
 int ordernarAscendentePorNombreYsector(Employee lista[],int tam);
 int eliminarEmpleadoPorId(Employee lista[],int tam);
 
-int modificarAlumno(Employee lista[],int tam);
-
-
-
+int modificarAlumno(Employee[],int);
+void menuListarOrdenar(Employee[],int);
+int cuantosSuperanPromedio(Employee[],int);
+float salarioPromedio(Employee[],int);
+float salarioTotal(Employee[],int);
 
 
 
