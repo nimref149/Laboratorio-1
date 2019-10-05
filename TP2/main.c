@@ -17,7 +17,7 @@ int main()
 
         do
         {
-            printf("======ABM=====\n");
+            printf("============ABM==========\n");
             printf("1.Altas\n2.Modificar\n3.Baja\n4.Informar\n5.Salir\n");
             while((getIntValid(&opcion,"Ingrese una opcion: ","Error, ingreso una opcion invalida\n",1,5))==-1);
             flag=autoId(empleados,TE);
@@ -49,7 +49,7 @@ int main()
                 }
                 else
                 {
-                    respuesta=modificarAlumno(empleados,TE);
+                    respuesta=modificarEmpleado(empleados,TE);
                     switch(respuesta)
                     {
                     case 0:

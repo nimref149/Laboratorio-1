@@ -154,10 +154,6 @@ int removeEmployee(Employee empleados[],int tam,int id)
     index=findEmployeeById(empleados,tam,id);
     if(empleados!=NULL && tam>0 && index!=-1)
     {
-        //for(i=0; i<tam; i++)
-        // {
-        //  if(empleados[i].id==id&&empleados[i].isEmpty==OCUPADO)
-        // {
         mostrarUnEmpleado(empleados[index]);
         respuesta=confirm();
         if(respuesta==1)
@@ -170,8 +166,6 @@ int removeEmployee(Employee empleados[],int tam,int id)
             retorno=1;
         }
 
-        //}
-        //}
     }
     return retorno;
 }
@@ -242,7 +236,7 @@ int ordernarAscendentePorNombreYsector(Employee lista[],int tam)
                         auxEmpleado = lista[i];
                         lista[i] = lista[j];
                         lista[j] = auxEmpleado;
-                        retorno=0;
+
                     }
 
                     else
@@ -254,7 +248,7 @@ int ordernarAscendentePorNombreYsector(Employee lista[],int tam)
                                 auxEmpleado = lista[i];
                                 lista[i] = lista[j];
                                 lista[j] = auxEmpleado;
-                                retorno=0;
+
                             }
                         }
                     }
@@ -289,7 +283,7 @@ int ordernarDescendentePorNombreYsector(Employee lista[],int tam)
                         auxEmpleado = lista[i];
                         lista[i] = lista[j];
                         lista[j] = auxEmpleado;
-                        retorno=0;
+
                     }
 
                     else
@@ -301,10 +295,11 @@ int ordernarDescendentePorNombreYsector(Employee lista[],int tam)
                                 auxEmpleado = lista[i];
                                 lista[i] = lista[j];
                                 lista[j] = auxEmpleado;
-                                retorno=0;
+
                             }
                         }
                     }
+                    retorno=0;
                 }
             }
         }
@@ -359,7 +354,7 @@ int eliminarEmpleadoPorId(Employee lista[],int tam)
     return retorno;
 }
 
-int modificarAlumno(Employee lista[],int tam)
+int modificarEmpleado(Employee lista[],int tam)
 {
     int retorno=-1;
     int index;
@@ -447,7 +442,7 @@ float salarioPromedio(Employee empleados[],int tam)
 
 int cuantosSuperanPromedio(Employee empleados[],int tam)
 {
-    int retorno;
+    int retorno=0;
     float promedio;
     int superanPromedio=0;
     int i;

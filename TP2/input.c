@@ -17,7 +17,6 @@ tolower();para pasar el contenido de una variable tipo char ( char letra ) o arr
 void getString(char message[],char input[])
 {
     printf("%s",message);
-    //scanf ("%s", input);
     gets(input);
 }
 
@@ -106,8 +105,37 @@ int esSoloLetras(char str[])
     }
     return 0;
 }
+int getIntValid(int* input,char message[],char eMessage[],int lowLimit,int hiLimit)
+{
+    char aux[256];
+    int auxNumero;
+    getString(message,aux);
+    int retorno=-1;
+    int esValido=esNumerico(aux);
+    if(esValido==0)
+    {
+        auxNumero=atoi(aux);
+        if(auxNumero>=lowLimit && auxNumero<=hiLimit)
+        {
+            *input=auxNumero;
 
-int getIntValid(int* input,char message[],char eMessage[],int lowLimit,int hiLimit) //usa 2 funciones,esNumerico,getstring y nada mas, es mejor que getInt.con validacion de rango y numero
+            retorno=0;
+        }
+        else
+        {
+
+            printf("%s ",eMessage);
+        }
+    }
+    else
+    {
+        printf("%s ",eMessage);
+    }
+
+    return retorno;
+}
+/*
+int getIntValid(int* input,char message[],char eMessage[],int lowLimit,int hiLimit)
 {
     char aux[256];
     int auxNumero;
@@ -135,6 +163,7 @@ int getIntValid(int* input,char message[],char eMessage[],int lowLimit,int hiLim
 
     return retorno;
 }
+*/
 
 int getFloatValid(float* input,char message[],char eMessage[], float lowLimit, float hiLimit)
 {
