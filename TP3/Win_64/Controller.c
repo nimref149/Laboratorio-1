@@ -13,6 +13,12 @@
  */
 int controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 {
+    FILE* pArchivo;
+    pArchivo=fopen(path,"rb");
+    if(pArchivo!=NULL){
+    parser_EmployeeFromText(pArchivo,pArrayListEmployee)
+    }
+
     return 1;
 }
 

@@ -37,7 +37,7 @@ int main()
 
     //x=ll_add(listaEmpleados,e1);
     printf("%d",x);
-
+    controller_loadFromText("data.txt",listaEmpleados);
     /*
     ll_add(listaEmpleados,e1);
     x=ll_len(listaEmpleados);
@@ -67,7 +67,7 @@ int main()
 
 
 
-
+controller_loadFromText(char* path , LinkedList* pArrayListEmployee)
 
 
 
