@@ -51,6 +51,9 @@ void lenTestCase01(void)
 void lenTestCase02(void)
 {
     //esto prueba cuando es con 0
+    //si hay un error me tengo que fijar en las lineas de testing cuando dice error 54 ej.
+
+
     int r;
     LinkedList* list;
     list = ll_newLinkedList();

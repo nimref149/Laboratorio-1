@@ -16,6 +16,8 @@ con indexOf le envias el indice la estructura devuelve la estructura le paso una
 leeer que devuelven las funciones de linkedlist
 no reservas un empleado en las funciones cno malloc
 hay que leer el archivo en binario una ves y luego
+en la parte de crea un nuevo empleado poner un constructor parametrisado
+Al setear algunos datos solo sirve en modificar
 
 */
 
@@ -66,7 +68,7 @@ int ll_len(LinkedList* lista)
  */
 static Node* getNode(LinkedList* this, int nodeIndex)
 {
-    //buscar un nodo en partitucal en un indiice que es get devuelva el nodo encapsultado y que
+    //buscar un nodo en partitucal en un indiice que es get devuelva el nodo encapsulado y que
 
 
 
@@ -100,7 +102,6 @@ Node* test_getNode(LinkedList* this, int nodeIndex)
 static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     /**
-    C
     //ll_add, busca donde enganchar el elemento
     //ll_get buscar le paso el indice devuelve el dato
     //ll_set sobreescribir un dato, pero no se puede porque puede haber otra estructura apuntando al mismo dato
@@ -126,6 +127,10 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     desencapsulo un dato con get de cada uno y lo agrego a la nueva lista
     ll_sort mandar a la funcion 2 puntero a void, desengacno uno lo pongo a un auxiliar desengancho el otro lo pongo a un auxiliar y lo pongo
     hacer diagramas
+
+
+
+
 
     */
    //ala llamo al addnote y buscar el ultimo elemento guardado osea el que esta en nulo e ir a engancharlo obtengo el indice y se lo paso a la funcion addnode busco el ultimo elemento y lo engancho previo tengo que crear un nodo en memoria
@@ -218,8 +223,15 @@ int ll_remove(LinkedList* this,int index)
                         ( 0) Si funciono correctamente
  *
  */
-int ll_clear(LinkedList* this)
+int ll_clear(LinkedList* lista)
 {
+    int i;
+    len=ll_len(lista);
+    int returnAux = -1;
+   // int returnAux = -2; rompe por que esta mal el retorno
+    for(i=0;lista<){
+    lista->size=0;
+    }
     int returnAux = -1;
 
     return returnAux;
