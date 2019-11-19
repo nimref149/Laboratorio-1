@@ -57,7 +57,7 @@ int main(void)
 
         //startTesting(18); // ll_clone
 
-        //startTesting(19); // ll_sort */
+        startTesting(19); // ll_sort */
 
     return 0;
 }

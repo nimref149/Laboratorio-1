@@ -585,22 +585,23 @@ int ll_containsAll(LinkedList* lista,LinkedList* lista2)
 
         for(i=0; i<len; i++)
         {
-            /*
-            aNode=getNode(lista2,i);
-            if(aNode!=NULL&&ll_indexOf(lista,aNode->pElement)==-1)
+            aNode=ll_get(lista2,i);
+            if(ll_contains(lista,aNode)==0)
             {
                 returnAux=0;
                 break;
+            }
+            /*
+            else
+            {
+                returnAux=1;
             }
             */
-            aNode=ll_get(lista2,i);
-            if((ll_contains(lista,aNode))==0)
-            {
-                returnAux=0;
-                break;
-            }
         }
-        returnAux=1;
+        if(returnAux!=0)
+        {
+            returnAux=1;
+        }
     }
     return returnAux;
 }
@@ -718,13 +719,11 @@ int ll_sort(LinkedList* lista, int (*pFunc)(void*,void*), int order)
                             ll_set(lista,j,ll_get(lista,i));
                             ll_set(lista,i,auxElement);
                         }
-
                     }
                 }
             }
         }
     }
-
     return returnAux;
 }
 
